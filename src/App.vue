@@ -1,54 +1,46 @@
 <template>
   <!-- 外层：flex居中容器，不设置背景 -->
-  <div class="home">
-    <!-- 新增 card 包裹所有内容！背景色加在这里 -->
-    <div class="card">
-      <ul class="list">
-        <li><a href="#">Music</a></li>
-        <li><a href="#">Book</a></li>
-        <li><a href="#">Dev</a></li>
-        <li><a href="#">Picture</a></li>
-        <li><a href="#">Philosophy</a></li>
-        <li><a href="#">About</a></li>
-      </ul>
-      <article></article>
-      <aside></aside>
+    <div class="home">
+      <!-- 新增 card 包裹所有内容！背景色加在这里 -->
+      <div class="card">
+        <ul class="list">
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Music</a></li>
+          <li><a href="#">Book</a></li>
+          <li><a href="#">Dev</a></li>
+          <li><a href="#">Photo</a></li>
+          <li><a href="#">Philosophy</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+        <article>
+          <section>Welcome to my space. A quiet corner for vintage tech, eclectic playlists, philosophy, books, and
+            everyday moments. Constantly fascinated by the internet — my digital home away from home.</section>
+        </article>
+        <aside></aside>
+      </div>
     </div>
-  </div>
+  <Blog />
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from "vue";
+import Blog from './views/Blog.vue'
 document.addEventListener('contextmenu', e => e.preventDefault());
-
-//Data
-let name = ref('Lyra ')
-let sign = ref('Think Different.')
-
-//Methods
-function changeName() {
-  if (name.value === 'Lyra ') {
-
-    name.value = 'Mopodo '
-
-  } else {
-
-    name.value = 'Lyra '
-
-  }
-}
 </script>
 
-<style scoped>
+<style >
 * {
   padding: 0;
   margin: 0;
   list-style: none;
-  font-size: 20px;
-}
-
-a {
+  font-size: 15px;
   color: #999;
+  /* box-sizing: border-box; */
+  font-family: 'Courier New', 'Times New Roman', Georgia, serif;
+}
+body {
+  background:#FBF8F1;
+}
+a {
   text-decoration: none;
 }
 
@@ -65,10 +57,10 @@ a {
   display: flex;
   width: 600px;
   height: 400px;
-  background: #ffffff66;
   padding: 10px;
   border-radius: 12px;
   box-shadow: 0 0 5px #ccc;
+    background: #F3EFE0;
 }
 
 .list {
@@ -78,17 +70,21 @@ a {
   flex-shrink: 0;
   width: 100px;
   gap: 20px;
-
+  border-right: 1px solid #E0DDAA;
+  background: #F3EFE0;
 }
 
 article {
   display: flex;
   flex: 1;
+  padding: 10px;
+  background: #F3EFE0;
 }
 
 aside {
   display: flex;
   flex-shrink: 0;
   width: 100px;
+  background: #F3EFE0;
 }
 </style>

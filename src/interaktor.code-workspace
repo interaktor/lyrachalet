@@ -4,14 +4,20 @@
 			"path": "../../../../interaktor"
 		},
 		{
-			"path": "../../../../hello_vue3"
-		},
-		{
 			"path": "../../../../Web"
 		},
 		{
-			"path": ".."
+			"path": "../../../网页设计课程"
+		},
+		{
+			"path": "../../../HARNESS/personal-dashboard"
+		},
+		{
+			"path": "../../../HARNESS/hello_vue3"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Web",
+		"js/ts.experimental.useTsgo": false
+	}
 }
