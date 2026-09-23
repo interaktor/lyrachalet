@@ -1,90 +1,181 @@
 <template>
-  <!-- 外层：flex居中容器，不设置背景 -->
-    <div class="home">
-      <!-- 新增 card 包裹所有内容！背景色加在这里 -->
-      <div class="card">
-        <ul class="list">
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Music</a></li>
-          <li><a href="#">Book</a></li>
-          <li><a href="#">Dev</a></li>
-          <li><a href="#">Photo</a></li>
-          <li><a href="#">Philosophy</a></li>
-          <li><a href="#">About</a></li>
-        </ul>
+    <div class="box_blog">
+        <!-- Header Area -->
+        <header>this is my life...</header>
+
+        <!-- Article Area -->
         <article>
-          <section>Welcome to my space. A quiet corner for vintage tech, eclectic playlists, philosophy, books, and
-            everyday moments. Constantly fascinated by the internet — my digital home away from home.</section>
+            <section id="info">
+                <div class="avatar">
+                    <img src="./assets/home-img/interaktor.jpeg" alt="">
+                </div>
+                <div class="bio">
+                    some daily updates...
+                    hope you are happy every day.
+                </div>
+                <div class="nav">
+                    <ul>
+                        <li><RouterLink to="/lyrachalet/home" active-class="link-active">Home</RouterLink></li>
+                        <li><RouterLink to="/lyrachalet/blog" active-class="link-active">Blog</RouterLink></li>
+                        <li><RouterLink to="#" >Music</RouterLink></li>
+                        <li><RouterLink to="#" >Book</RouterLink></li>
+                        <li><RouterLink to="#" >Dev</RouterLink></li>
+                        <li><RouterLink to="#" >Photo</RouterLink></li>
+                        <li><RouterLink to="#" >Philosophy</RouterLink></li>
+                        <li><RouterLink to="#" >About</RouterLink></li>
+                    </ul>
+                </div>
+                <table class="widget-calendar">
+                    <thead>
+                        <th class="calendar__header" colspan="7"><span id="nowMonth"></span> 2026</th>
+                    </thead>
+                    <tbody id="cal-body">
+                        <tr class="calendar__row">
+                            <td>Su</td>
+                            <td>Mo</td>
+                            <td>Tu</td>
+                            <td>We</td>
+                            <td>Th</td>
+                            <td>Fr</td>
+                            <td>Sa</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="content">
+               <RouterView></RouterView>
+            </section>
+
         </article>
-        <aside></aside>
-      </div>
+
     </div>
-  <Blog />
 </template>
 
 <script setup lang="ts">
-import Blog from './views/Blog.vue'
+import { RouterView,RouterLink } from 'vue-router';
 document.addEventListener('contextmenu', e => e.preventDefault());
 </script>
 
-<style >
-* {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  font-size: 15px;
-  color: #999;
-  /* box-sizing: border-box; */
-  font-family: 'Courier New', 'Times New Roman', Georgia, serif;
-}
-body {
-  background:#FBF8F1;
-}
-a {
-  text-decoration: none;
-}
+<style>
+        :root {
+            --bg-color: #FBF8F1;
+            --card-bg: #FFFFFF;
+            --sidebar-bg: #F3EFE0;
+            --text-main: #434242;
+            --accent-color: #22A39F;
+            --border-color: #E0DDAA;
+        }
 
-.home {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* flex-direction: column; */
-  height: 80vh;
-}
+        * {
+            padding: 0;
+            margin: 0;
+            border-radius: 8px;
+            box-sizing: border-box;
+            list-style: none;
+            font-family: 'Courier New', 'Times New Roman', Georgia, serif;
+            color: var(--text-main);
+        }
 
-/* 给card加背景，padding让内容不要贴边 */
-.card {
-  display: flex;
-  width: 600px;
-  height: 400px;
-  padding: 10px;
-  border-radius: 12px;
-  box-shadow: 0 0 5px #ccc;
-    background: #F3EFE0;
-}
+        body {
+            background-color: var(--bg-color);
+        }
+        .link-active {
+            color: var(--accent-color);
+        }
+        .is_today {
+            background-color: #434242 !important;
+            color: #ffffff !important;
+            border-radius: 2px !important;
+            font-weight: bold;
+        }
 
-.list {
-  /* 删掉你之前的margin-left:-130px，这个会破坏居中！ */
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  width: 100px;
-  gap: 20px;
-  border-right: 1px solid #E0DDAA;
-  background: #F3EFE0;
-}
+        .box_blog {
+            display: flex;
+            margin: 20px auto;
+            justify-content: center;
+            flex-direction: column;
+            width: 650px;
+            gap: 10px;
 
-article {
-  display: flex;
-  flex: 1;
-  padding: 10px;
-  background: #F3EFE0;
-}
+        }
 
-aside {
-  display: flex;
-  flex-shrink: 0;
-  width: 100px;
-  background: #F3EFE0;
-}
+        header,
+        #info,
+        #content {
+            border: 1px solid var(--border-color);
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            width: 650px;
+            height: 40px;
+            background: #F3EFE0;
+            font-size: 13px;
+            font-style: italic;
+            text-indent: 1vh;
+        }
+
+        article {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+
+        #info {
+            width: 160px;
+            height: 690px;
+            padding: 14px 10px;
+            background: var(--sidebar-bg);
+        }
+
+        .avatar img {
+            width: 140px;
+            border: 1px solid #ddd;
+        }
+
+        .bio {
+            padding: 18px 0px;
+            font-size: 11px;
+            border-bottom: 1px dashed #e0dad0;
+        }
+
+        .nav {
+            padding: 18px 0;
+            border-bottom: 1px dashed #e0dad0;
+        }
+
+
+        .nav a:hover {
+            color: var(--accent-color)
+        }
+
+        .widget-calendar {
+            width: 140px;
+            border: 1px solid #434242;
+            border-radius: 4px;
+            margin: 18px 0;
+        }
+
+        #cal-body td,
+        .calendar__header {
+            border: none !important;
+            border-radius: 0 !important;
+            background: transparent;
+            padding: 4px 0;
+            text-align: center;
+            font-size: 12px;
+        }
+        
+        #content {
+            display: grid;
+            grid-template-columns: 1fr;
+            width: 490px;
+            height: 690px;
+            background: var(--card-bg);
+            padding: 15px;
+            background: var(--sidebar-bg);
+        }
+        
 </style>
